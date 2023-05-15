@@ -1,0 +1,83 @@
+@layout("layouts/base") 
+@set("title", "Projects" )
+
+@section('body')
+
+<section class="min-h-screen flex flex-col item-center py-10 mx-auto gap-2.5">
+	@include("partials/app-navigation")
+
+	<section class="mt-10">
+		<div class="flex gap-2.5 justify-end">
+			<a class="btn" href="#"> Log Time </a>
+			<a class="btn" href="#"> Add Task </a>
+		</div>
+	</section>
+
+	<section class="flex gap-2 justify-between">
+		<div
+			class="border border-surface flex-1 p-2.5 rounded-md hover:border-text transition-colors ease-in-out duration-[500ms]"
+		>
+			<div class="h-full flex flex-col justify-between">
+				<h2 class="strong font-semibold">Members</h2>
+				<div class="flex items-center justify-between">
+					<p class="text-3xl font-bold">{{ memberCount || 0 }}</p>
+					<div>
+						<a href="#" class="btn mini secondary">&rarr;</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div
+			class="border border-surface flex-1 p-2.5 rounded-md hover:border-text transition-colors ease-in-out duration-[500ms]"
+		>
+			<div class="h-full flex flex-col justify-between">
+				<h2 class="strong font-semibold">Tasks</h2>
+				<div class="flex items-center justify-between">
+					<p class="text-3xl font-bold">{{ project.taskCount || 0 }}</p>
+					<div>
+						<a href="#" class="btn mini secondary">&rarr;</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div
+			class="border border-surface flex-1 p-2.5 rounded-md hover:border-text transition-colors ease-in-out duration-[500ms]"
+		>
+			<div class="h-full flex flex-col justify-between">
+				<h2 class="strong font-semibold">Time Logs</h2>
+				<div class="flex items-center justify-between">
+					<p class="text-3xl font-bold">{{ project.timeLogsCount || 0 }}</p>
+					<div>
+						{{-- <a href="#" class="btn mini secondary"> View &rarr;</a> --}}
+						<a href="#" class="btn mini secondary">&rarr;</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="mt-10 flex flex-col gap-5">
+		<div class="flex">
+				<a class="btn secondary ml-auto !text-subtle hover:!text-text" href="{{ route("ProjectsController.edit",{id: project.id}) }}"> 
+					<span class="icon text-current">
+						Edit
+					</span>
+				</a>
+		</div>
+		<div>
+			<h2 class="strong text-muted font-bold">Name</h2>
+			<div class="mt-1 text-text">
+				<p>{{ project.name }}</p>
+			</div>
+		</div>
+		<div>
+			<h2 class="strong font-bold text-muted">About</h2>
+			<div class="mt-1 text-text">
+				<p>{{ project.description }}</p>
+			</div>
+		</div>
+	</section>
+</section>
+@end

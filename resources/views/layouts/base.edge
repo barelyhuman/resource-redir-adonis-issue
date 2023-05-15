@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @entryPointScripts("app")
+
+    @if(title)
+      <title>{{ title }} | RMan</title>
+    @else
+      <title>RMan</title>
+    @end
+    <style>
+      /*  FUOC    */
+      html{
+         visibility: hidden;
+        opacity: 1;
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/app.css') }}" >
+  </head>
+  <body class="bg-base max-w-content mx-auto">
+     @if(flashMessages.has('error'))
+      <div
+        class="mt-10 min-w-[250px] p-4 mb-4 text-sm border border-surface text-base tracking-wide bg-red-500 rounded-lg" role="alert"
+      >
+        {{ flashMessages.get("error") }}
+    </div>
+    @endif
+
+    @if(flashMessages.has('message'))
+      <div
+        class="mt-10 min-w-[250px] p-4 mb-4 text-sm border border-text text-text rounded-lg bg-base" role="alert"
+      >
+        {{ flashMessages.get("message") }}
+    </div>
+    @endif
+
+    @!section('body')
+  </body>
+</html>

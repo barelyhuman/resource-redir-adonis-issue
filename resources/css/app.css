@@ -1,0 +1,89 @@
+@import url('https://rsms.me/inter/inter.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--base: theme('colors.zinc.50');
+	--surface: theme('colors.zinc.100');
+	--overlay: theme('colors.zinc.200');
+	--muted: theme('colors.zinc.500');
+	--subtle: theme('colors.zinc.700');
+	--text: theme('colors.zinc.900');
+	--accent: #fd7e14;
+	--on-accent: white;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--base: theme('colors.zinc.900');
+		--surface: theme('colors.zinc.800');
+		--overlay: theme('colors.zinc.700');
+		--muted: theme('colors.zinc.500');
+		--subtle: theme('colors.zinc.400');
+		--text: theme('colors.zinc.200');
+		--accent: #ffa94d;
+		--on-accent: black;
+	}
+}
+
+body {
+	@apply text-text bg-base antialiased;
+}
+
+.btn {
+	@apply px-4 py-2 font-medium text-md bg-surface text-text border border-surface rounded-md flex items-center;
+	@apply hover:opacity-90;
+	@apply disabled:opacity-50 disabled:pointer-events-none;
+}
+
+.btn.secondary {
+	@apply bg-transparent;
+	@apply hover:bg-surface;
+}
+
+.btn.danger {
+	@apply text-red-300;
+	@apply hover:text-red-500;
+}
+
+.btn.mini {
+	@apply px-2 py-1;
+}
+
+.input {
+	@apply flex h-10 w-full rounded-md border bg-transparent px-3 py-2 text-sm;
+	@apply file:border-0 file:bg-transparent file:text-sm file:font-medium;
+	@apply focus:ring-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+	@apply disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.checkbox {
+	@apply w-5 h-5 text-overlay bg-surface border-overlay rounded;
+	@apply focus:ring-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+}
+
+.pagetitle {
+	@apply text-2xl font-bold text-text;
+}
+
+/*FOUC*/
+html {
+	visibility: visible;
+	opacity: 1;
+}
+
+.icon > svg {
+	height: 16px;
+	width: 16px;
+}
+
+.turbo-progress-bar {
+	height: 2px;
+	background-color: var(--text);
+}
+
+.segmented-control-item {
+	@apply px-4 py-2 font-medium text-md text-text flex items-center rounded-none rounded-t-md cursor-pointer transition-all ease-in hover:bg-surface;
+}

@@ -1,0 +1,45 @@
+@layout('layouts/base') 
+@set('title', 'Create Project') 
+
+@section('body')
+<section
+	class="min-h-screen flex flex-col item-center py-10 mx-auto gap-3"
+	>
+	<div class="min-h-[250px]">
+		@include("partials/app-navigation")
+
+		<form class="flex flex-col gap-3" method="POST" action="{{ route("ProjectsController.store") }}">
+				{{ csrfField() }}
+			<div class="flex flex-col">
+				<label>Team</label>
+				<select class="input mt-2" name="teamId" value={{  teams[0].id }}  required/>
+					@each(team in teams)
+						<option value="{{ team.id }}">{{ team.name }}</option>
+					@end
+				</select>
+			</div>
+
+			<div class="flex flex-col">
+				<label>Name</label>
+				<input class="input mt-2" name="name"  required/>
+			</div>
+
+			<div class="flex flex-col">
+				<label> Description </label>
+				<textarea 
+				rows=3
+				class="input mt-2" name="description"></textarea>
+			</div>
+
+			<div class="flex justify-end items-center gap-2">
+				<button class="btn" type="submit">
+					Create Project
+				</button>
+				<button class="btn secondary" type="reset">
+					Reset
+				</button>
+			</div>
+		</form>
+	</div>
+	</section>
+@end

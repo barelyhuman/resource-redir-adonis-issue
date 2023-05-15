@@ -1,0 +1,25 @@
+<div class="flex my-2 items-center justify-between">
+	<ol class="flex items-center">
+		@each(crumb in breadcrumbs)
+			<li class="text-md tracking-wider after:text-muted last:truncate [&:last-child]:font-bold [&:not(:last-child)]:after:mx-[1ch] [&:not(:last-child)]:after:content-['\203A']">
+				<a class="hover:underline" href="{{ crumb.link }}">{{ crumb.title }}</a>
+			</li>
+		@end
+	</ol>
+	
+	<div>
+		<a class="btn mini danger text-red-300 secondary" href="{{ route('AuthController.logoutGet') }}"> Logout </a>
+	</div>
+</div>
+
+<header class="my-2">
+	<nav class="flex items-center gap-4 relative">
+		@each(menuItem in appNavigationList)
+			<a class="segmented-control-item {{ request.url().startsWith( menuItem.url() ) ? 'border-b-2 border-b-text':'' }}" href="{{ menuItem.url() }}">{{ menuItem.text }}</a>
+		@end
+		<div class="h-[2px] bg-text transition-[left] transition-linear duration-[500ms] absolute bottom-0 z-0"></div>
+		<div class="h-[2px] bg-surface w-full absolute bottom-0 z-[-1]"></div>
+	</nav>
+</header>
+
+

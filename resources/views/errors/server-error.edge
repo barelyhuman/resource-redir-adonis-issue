@@ -1,0 +1,14 @@
+@layout("layouts/base")
+@set("title","500 | Oops! Something went wrong")
+
+@section('body')
+<section
+	class="min-h-screen flex flex-col item-center py-10 mx-auto gap-3"
+	>
+	<h1 class="pagetitle">{{ title }}</h1>
+	<div class="min-h-[250px] text-subtle">
+		<p>Something broke, let's take you back</p>
+		<a class="underline hover:text-text" href="{{ route("ProjectsController.index") }}">&larr; Home</a>
+	</div>
+</section>
+@end
